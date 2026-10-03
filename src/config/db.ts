@@ -8,8 +8,6 @@ export async function connectToDatabase() {
   await client.connect();
 
   console.log("MongoDB connected successfully".bgGreen);
-
-  return client.db("URL");
 }
 
 export async function disconnectFromDatabase() {
