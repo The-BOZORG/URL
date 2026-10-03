@@ -1,8 +1,8 @@
-import { AppError } from "@/libs/apiResponse";
+import { ApiError } from "@/libs/apiResponse";
 import { Request, Response, NextFunction } from "express";
 
 export const errorHandler = (
-  err: AppError,
+  err: ApiError,
   req: Request,
   res: Response,
   next: NextFunction,
