@@ -1,8 +1,15 @@
-import express from "express";
-
+import { Router } from "express";
 import authRouter from "@/routes/auth";
 
-const route = express.Router();
+const route = Router();
+
+route.get("/", (req, res) => {
+  res.status(200).json({
+    message: "API is live",
+    status: "ok",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 route.use("/auth", authRouter);
 
