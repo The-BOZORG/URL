@@ -6,15 +6,16 @@ import morgan from "morgan";
 
 import route from "@/routes";
 import { errorHandler } from "./middlewares/errorHandler";
+import { env } from "@/config";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(morgan("combined"));
+app.use(morgan("dev"));
 
-app.use(cookieParser());
+app.use(cookieParser(env.JWT_SECRET));
 app.use(helmet());
 app.use(cors());
 

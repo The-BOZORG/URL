@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { userDto } from "@/libs/interface";
 import { ApiError } from "@/libs/apiResponse";
 import { asyncHandler } from "@/middlewares/asyncHandler";
+import { env } from "@/config";
 
 export const register = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
@@ -15,10 +16,13 @@ export const register = asyncHandler(
 
     if (existingUser) throw new ApiError("User already exists", 400);
 
+    const role = env.WHITELIST.includes(email) ? "admin" : "user";
+
     const newUser = await User.create({
       username,
       email,
       password,
+      role,
     });
 
     res.status(201).json({
