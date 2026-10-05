@@ -9,7 +9,7 @@ export const register = asyncHandler(
     const { username, email, password } = req.body as userDto;
 
     const existingUser = await User.findOne({ email })
-      .select("username email password role")
+      .select("username email role")
       .lean()
       .exec();
 
