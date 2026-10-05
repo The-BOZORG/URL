@@ -1,13 +1,13 @@
 import { User } from "@/models/user";
 import { Request, Response } from "express";
-import { userDto } from "@/libs/interface";
+import { registerDto } from "@/libs/interface";
 import { ApiError } from "@/libs/apiResponse";
 import { asyncHandler } from "@/middlewares/asyncHandler";
 import { env } from "@/config";
 
 export const register = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
-    const { username, email, password } = req.body as userDto;
+    const { username, email, password } = req.body as registerDto;
 
     const existingUser = await User.findOne({ email })
       .select("username email role")
