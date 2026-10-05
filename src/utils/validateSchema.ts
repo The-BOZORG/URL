@@ -9,4 +9,10 @@ export const RegisterSchema = z.object({
   password: z.string().min(3, "Password must be at least 3 characters"),
 });
 
+export const LoginSchema = z.object({
+  email: z.string().email().toLowerCase().trim(),
+  password: z.string().min(3, "Password must be at least 3 characters"),
+});
+
 export type Register = z.infer<typeof RegisterSchema>;
+export type Login = z.infer<typeof LoginSchema>;

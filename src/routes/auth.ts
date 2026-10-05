@@ -2,13 +2,15 @@ import express from "express";
 
 import { register } from "@/controllers/auth/register";
 import { login } from "@/controllers/auth/login";
+import { refresh } from "@/controllers/auth/refresh";
 
 import { zodValidate } from "@/middlewares/zodValidator";
-import { RegisterSchema } from "@/utils/validateSchema";
+import { LoginSchema, RegisterSchema } from "@/utils/validateSchema";
 
 const router = express.Router();
 
 router.post("/register", zodValidate(RegisterSchema), register);
-router.post("/login", login);
+router.post("/login", zodValidate(LoginSchema), login);
+router.post("/refresh", refresh);
 
 export default router;

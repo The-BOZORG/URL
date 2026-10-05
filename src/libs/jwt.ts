@@ -31,7 +31,7 @@ export const attachCookie = (res: Response, userId: Types.ObjectId): void => {
 
   const sevenDays = 1000 * 60 * 60 * 24 * 7;
 
-  res.cookie("token", token, {
+  res.cookie("refreshToken", token, {
     httpOnly: true,
     expires: new Date(Date.now() + sevenDays),
     secure: process.env.NODE_ENV === "production",
