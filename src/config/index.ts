@@ -7,6 +7,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().default(3000),
   WHITELIST: z.string().email(),
   MONGO_URI: z.string().url(),
+  REDIS_URL: z.string().url(),
   JWT_SECRET: z.string().min(1),
   JWT_ACCESS_SECRET: z.string().min(1),
   ACCESS_TOKEN_EXPIRY: z.coerce.number().int().positive(),
