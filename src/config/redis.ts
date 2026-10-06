@@ -1,7 +1,8 @@
 import { createClient } from "redis";
+import { env } from "@/config";
 import "colors";
 
-export const client = createClient();
+export const client = createClient({ url: env.REDIS_URL });
 
 client.on("error", (error) => {
   console.error("Redis Client Error:", error);
