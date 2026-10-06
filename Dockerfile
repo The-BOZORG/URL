@@ -2,9 +2,11 @@ FROM node:24-alpine
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+RUN corepack enable
 
-RUN yarn install --frozen-lockfile
+COPY package.json yarn.lock .yarnrc.yml ./
+
+RUN yarn install
 
 COPY . .
 
