@@ -30,11 +30,7 @@ export const login = asyncHandler(
 
     const refreshToken = attachCookie(res, user._id);
 
-    await saveRefreshToken(
-      user._id.toString(),
-      refreshToken,
-      env.REFRESH_TOKEN_EXPIRY,
-    );
+    await saveRefreshToken(user._id, refreshToken, env.REFRESH_TOKEN_EXPIRY);
 
     res.status(200).json({
       accessToken,

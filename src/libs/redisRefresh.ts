@@ -1,7 +1,8 @@
 import { client } from "@/config/redis";
+import { Types } from "mongoose";
 
 export const saveRefreshToken = async (
-  userId: string,
+  userId: Types.ObjectId,
   refreshToken: string,
   expiry: number,
 ): Promise<void> => {
@@ -11,11 +12,13 @@ export const saveRefreshToken = async (
 };
 
 export const getRefreshToken = async (
-  userId: string,
+  userId: Types.ObjectId,
 ): Promise<string | null> => {
   return client.get(`refreshToken:${userId}`);
 };
 
-export const deleteRefreshToken = async (userId: string): Promise<void> => {
+export const deleteRefreshToken = async (
+  userId: Types.ObjectId,
+): Promise<void> => {
   await client.del(`refreshToken:${userId}`);
 };
