@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { env } from "@/config";
-import { ApiError } from "@/libs/apiResponse";
+import { ApiError } from "@/utils/apiResponse";
 import "colors";
 
 export const connectToDatabase = async (): Promise<void> => {

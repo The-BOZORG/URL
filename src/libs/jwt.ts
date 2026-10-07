@@ -26,7 +26,7 @@ export const verifyRefresh = (token: string) => {
   return jwt.verify(token, env.JWT_REFRESH_SECRET);
 };
 
-export const attachCookie = (res: Response, userId: Types.ObjectId): void => {
+export const attachCookie = (res: Response, userId: Types.ObjectId): string => {
   const token = generateRefresh(userId);
 
   const sevenDays = 1000 * 60 * 60 * 24 * 7;
@@ -37,4 +37,6 @@ export const attachCookie = (res: Response, userId: Types.ObjectId): void => {
     secure: process.env.NODE_ENV === "production",
     signed: true,
   });
+
+  return token;
 };

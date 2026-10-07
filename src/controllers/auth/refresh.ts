@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ApiError } from "@/libs/apiResponse";
+import { ApiError } from "@/utils/apiResponse";
 import { asyncHandler } from "@/middlewares/asyncHandler";
 import { verifyRefresh, generateAccess } from "@/libs/jwt";
 import { Types } from "mongoose";

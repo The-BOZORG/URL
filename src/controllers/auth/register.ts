@@ -1,7 +1,7 @@
 import { User } from "@/models/user";
 import { Request, Response } from "express";
-import { registerDto } from "@/libs/interface";
-import { ApiError } from "@/libs/apiResponse";
+import { registerDto } from "@/utils/interface";
+import { ApiError } from "@/utils/apiResponse";
 import { asyncHandler } from "@/middlewares/asyncHandler";
 import { env } from "@/config";
 

@@ -6,7 +6,7 @@ import { refresh } from "@/controllers/auth/refresh";
 import { logout } from "@/controllers/auth/logout";
 
 import { zodValidate } from "@/middlewares/zodValidator";
-import { LoginSchema, RegisterSchema } from "@/utils/validateSchema";
+import { LoginSchema, RegisterSchema } from "@/libs/validateSchema";
 
 const router = express.Router();
 

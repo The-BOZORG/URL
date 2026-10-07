@@ -1,11 +1,13 @@
 import { User } from "@/models/user";
 import { Request, Response } from "express";
-import { loginDto } from "@/libs/interface";
-import { ApiError } from "@/libs/apiResponse";
+import { loginDto } from "@/utils/interface";
+import { ApiError } from "@/utils/apiResponse";
 import { asyncHandler } from "@/middlewares/asyncHandler";
 import { attachCookie, generateAccess } from "@/libs/jwt";
 
 import bcrypt from "bcrypt";
+import { saveRefreshToken } from "@/libs/redisRefresh";
+import { env } from "@/config";
 
 export const login = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
@@ -26,7 +28,13 @@ export const login = asyncHandler(
 
     const accessToken = generateAccess(user._id);
 
-    attachCookie(res, user._id);
+    const refreshToken = attachCookie(res, user._id);
+
+    await saveRefreshToken(
+      user._id.toString(),
+      refreshToken,
+      env.REFRESH_TOKEN_EXPIRY,
+    );
 
     res.status(200).json({
       accessToken,
