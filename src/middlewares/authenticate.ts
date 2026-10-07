@@ -4,12 +4,13 @@ import { Types } from "mongoose";
 import { ApiError } from "@/utils/apiResponse";
 import { verifyAccess } from "@/libs/jwt";
 import { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
+import { User } from "@/models/user";
 
-export const authenticate = (
+export const authenticate = async (
   req: Request,
   _res: Response,
   next: NextFunction,
-): void => {
+): Promise<void> => {
   const authorization = req.headers.authorization;
 
   if (!authorization?.startsWith("Bearer "))
@@ -23,6 +24,13 @@ export const authenticate = (
     const payload = verifyAccess(token) as {
       userId: Types.ObjectId;
     };
+
+    const user = await User.findById(payload.userId).select("isVerified");
+
+    if (!user) throw new ApiError("User not found", 401);
+
+    if (!user.isVerified)
+      throw new ApiError("Please verify your account first", 403);
 
     req.userId = payload.userId;
 
