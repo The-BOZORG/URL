@@ -1,5 +1,6 @@
 import { Router } from "express";
 import authRouter from "@/routes/auth";
+import userRouter from "@/routes/user";
 
 const route = Router();
 
@@ -12,5 +13,6 @@ route.get("/", (req, res) => {
 });
 
 route.use("/auth", authRouter);
+route.use("user", userRouter);
 
 export default route;
