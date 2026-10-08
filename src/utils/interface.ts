@@ -8,3 +8,5 @@ export interface loginDto {
   email: string;
   password: string;
 }
+
+export type authRole = "admin" | "user";
