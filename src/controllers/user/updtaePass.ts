@@ -21,7 +21,7 @@ export const updatePassword = asyncHandler(
 
     if (!isPasswordCorrect) throw new ApiError("Invalid password", 401);
 
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.password = newPassword;
 
     await user.save();
 

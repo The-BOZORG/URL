@@ -1,0 +1,55 @@
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "username":"soroush",
+  "email":"soroush@yahoo.com",
+  "password":"1234"
+}
+
+### login
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email":"soroush@yahoo.com",
+  "password":"1234"
+}
+
+### refresh
+POST http://localhost:3000/api/v1/auth/refresh
+
+### logout
+POST http://localhost:3000/api/v1/auth/logout
+
+
+### getMe 
+GET http://localhost:3000/api/v1/user/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3Njc5ZDM5NjIxMTA3YzYxNjk0ODciLCJpYXQiOjE3OTE0NTMxMTYsImV4cCI6MTc5MTQ1NDAxNiwic3ViIjoiYWNjZXNzVG9rZW4ifQ.ioMU3ZHhFg_THzIiGAr5RdAa1dOmRlvr4TIkaUhUnA4
+
+### getAll user
+GET http://localhost:3000/api/v1/user/all?limit=5&offset=0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3NmIwMThhMDExM2Q3OTI0MGM0NTIiLCJpYXQiOjE3OTE0NTM5NTUsImV4cCI6MTc5MTQ1NDg1NSwic3ViIjoiYWNjZXNzVG9rZW4ifQ.U9SdnuFaGYtqHdbqbmdnBhx9srH1A7YXFVG6Q2wVoLg
+
+### update user
+PATCH http://localhost:3000/api/v1/user/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3NmIwMThhMDExM2Q3OTI0MGM0NTIiLCJpYXQiOjE3OTE0NTM5NTUsImV4cCI6MTc5MTQ1NDg1NSwic3ViIjoiYWNjZXNzVG9rZW4ifQ.U9SdnuFaGYtqHdbqbmdnBhx9srH1A7YXFVG6Q2wVoLg
+
+{
+  "username":"sorix"
+}
+
+### updatePass user
+PATCH http://localhost:3000/api/v1/user/updatePassword
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3NmQzOWFhZjc5Njc1ZDVhNWQ5YzIiLCJpYXQiOjE3OTE0NTQ1MjksImV4cCI6MTc5MTQ1NTQyOSwic3ViIjoiYWNjZXNzVG9rZW4ifQ.t0HluHD1cEMiYVHVnTk22qhkOxdW6A18cR8vVjazDfU
+
+{
+  "currentPassword":"1234",
+  "newPassword":"654321"
+}
+
+### delete user
+DELETE  http://localhost:3000/api/v1/user/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3NmUyMzE1NzVhZDU5NzEyNDc2YjIiLCJpYXQiOjE3OTE0NTQ3NTcsImV4cCI6MTc5MTQ1NTY1Nywic3ViIjoiYWNjZXNzVG9rZW4ifQ.qZAnuvaK9wuQ0HLDCM5C_w19GMh51Fu4pogAHa_5krw
