@@ -3,15 +3,17 @@ import { User } from "@/models/user";
 
 import { Request, Response } from "express";
 
-export const getMe = asyncHandler(async (req: Request, res: Response) => {
-  const userId = req.userId;
+export const getMe = asyncHandler(
+  async (req: Request, res: Response): Promise<void> => {
+    const userId = req.userId;
 
-  const user = await User.findById(userId)
-    .select("-__v -isVerified")
-    .lean()
-    .exec();
+    const user = await User.findById(userId)
+      .select("-__v -isVerified")
+      .lean()
+      .exec();
 
-  res.status(200).json({
-    user,
-  });
-});
+    res.status(200).json({
+      user,
+    });
+  },
+);
