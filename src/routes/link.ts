@@ -4,6 +4,7 @@ import { createLink } from "@/controllers/link/createLink";
 import { deleteLink } from "@/controllers/link/deleteLink";
 import { getMyLink } from "@/controllers/link/getLink";
 import { getAllLinks } from "@/controllers/link/getAllLink";
+import { redirectLink } from "@/controllers/redirect/redirectLink";
 
 import { authenticate } from "@/middlewares/authenticate";
 import { authorize } from "@/middlewares/authorization";
@@ -20,5 +21,7 @@ route.get("/all", authenticate, authorize(["admin"]), getAllLinks);
 route.post("/create", authenticate, zodValidate(CreateLinkSchema), createLink);
 
 route.delete("/delete/:LinkId", authenticate, deleteLink);
+
+route.get("/:shortLink", redirectLink);
 
 export default route;
