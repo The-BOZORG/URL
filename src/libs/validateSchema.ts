@@ -28,7 +28,12 @@ export const updatePasswordSchema = z.object({
   newPassword: z.string().min(3, "Password must be at least 3 characters"),
 });
 
+export const CreateLinkSchema = z.object({
+  Url: z.string().trim().url("Invalid URL"),
+});
+
 export type Register = z.infer<typeof RegisterSchema>;
 export type Login = z.infer<typeof LoginSchema>;
 export type update = z.infer<typeof updateSchema>;
 export type updatePassword = z.infer<typeof updatePasswordSchema>;
+export type CreateLink = z.infer<typeof CreateLinkSchema>;
