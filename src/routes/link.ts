@@ -1,6 +1,7 @@
 import express from "express";
 
 import { createLink } from "@/controllers/link/createLink";
+import { deleteLink } from "@/controllers/link/deleteLink";
 
 import { authenticate } from "@/middlewares/authenticate";
 import { authorize } from "@/middlewares/authorization";
@@ -11,5 +12,7 @@ import { CreateLinkSchema } from "@/libs/validateSchema";
 const route = express.Router();
 
 route.post("/create", authenticate, zodValidate(CreateLinkSchema), createLink);
+
+route.delete("/delete/:LinkId", authenticate, deleteLink);
 
 export default route;

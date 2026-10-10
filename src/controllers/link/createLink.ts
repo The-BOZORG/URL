@@ -6,10 +6,12 @@ import { randomBytes } from "node:crypto";
 
 export const createLink = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
+    const userId = req.userId;
+
     const { Url } = req.body;
 
     const link = await Link.create({
-      creator: req.userId,
+      creator: userId,
       Url,
       shortLink: randomBytes(6).toString("base64url"),
     });

@@ -8,6 +8,13 @@ export const getMyLink = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
     const userId = req.userId;
 
+    const {
+      search = "",
+      sortby = "createdAt_desc",
+      offset = 0,
+      limit = 100,
+    } = req.query;
+
     const user = await User.findById(userId)
       .select("-__v -isVerified")
       .lean()
@@ -15,20 +22,6 @@ export const getMyLink = asyncHandler(
 
     res.status(200).json({
       user,
-    });
-  },
-);
-
-export const getAllLinks = asyncHandler(
-  async (req: Request, res: Response): Promise<void> => {
-    const links = await Link.find({ userId: req.userId })
-      .select("-__v")
-      .sort({ createdAt: -1 })
-      .lean()
-      .exec();
-
-    res.status(200).json({
-      data: links,
     });
   },
 );
