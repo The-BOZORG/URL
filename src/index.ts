@@ -8,7 +8,8 @@ import swaggerUi from "swagger-ui-express";
 import route from "@/routes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { env } from "@/config";
-import { swaggerSpec } from "@/config/swagger";
+import swaggerUiConfig from "@/config/swagger";
+import swaggerSpec from "@/config/swaggerSpec.json";
 
 const app = express();
 
@@ -17,8 +18,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(morgan("dev"));
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+// Swagger UI is mounted before the global helmet() so its inline scripts
+// are not blocked by the default Content-Security-Policy.
+app.use(
+  swaggerUiConfig.routePrefix,
+  helmet({ contentSecurityPolicy: false }),
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, swaggerUiConfig),
+);
 app.get("/api-docs.json", (_req, res) => {
   res.json(swaggerSpec);
 });
