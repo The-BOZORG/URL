@@ -224,29 +224,43 @@ GET / — Check API status.
 
 ### Auth
 
-Method Endpoint Description
-POST /auth/register Create an account
-POST /auth/login Log in and receive access token and refresh cookie
-POST /auth/refresh Get a new access token using the refresh cookie
-POST /auth/logout Clear the refresh cookie and remove the stored refresh token
+Method Endpoint Description.
+
+- POST /auth/register Create an account.
+
+- POST /auth/login Log in and receive access token and refresh cookie.
+
+- POST /auth/refresh Get a new access token using the refresh cookie.
+
+- POST /auth/logout Clear the refresh cookie and remove the stored refresh token.
 
 ### Users
 
-Method Endpoint Description
-GET /user/me Get the current user's profile
-GET /user/all List users (admin; supports limit and offset)
-PATCH /user/update Update username and/or email
-PATCH /user/updatePassword Change password
-DELETE /user/delete Delete the current user's account
+Method Endpoint Description.
+
+- GET /user/me Get the current user's profile.
+
+- GET /user/all List users (admin; supports limit and offset).
+
+- PATCH /user/update Update username and/or email.
+
+- PATCH /user/updatePassword Change password.
+
+- DELETE /user/delete Delete the current user's account.
 
 ### Links
 
 Method Endpoint Description
-POST /link/create Create a short link
-GET /link/myLink List the current user's links
-GET /link/all List all links with pagination (admin; page, limit)
-DELETE /link/delete/:LinkId Delete a link by ID
-GET /link/:shortLink Public redirect; increments the view count
+
+- POST /link/create Create a short link.
+
+- GET /link/myLink List the current user's links.
+
+- GET /link/all List all links with pagination (admin; page, limit).
+
+- DELETE /link/delete/:LinkId Delete a link by ID.
+
+- GET /link/:shortLink Public redirect; increments the view count.
 
 ## Authentication and Authorization
 

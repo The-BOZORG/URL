@@ -18,14 +18,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(morgan("dev"));
 
-// Swagger UI is mounted before the global helmet() so its inline scripts
-// are not blocked by the default Content-Security-Policy.
 app.use(
   swaggerUiConfig.routePrefix,
-  helmet({ contentSecurityPolicy: false }),
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, swaggerUiConfig),
 );
+
 app.get("/api-docs.json", (_req, res) => {
   res.json(swaggerSpec);
 });
