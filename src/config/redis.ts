@@ -4,7 +4,7 @@ import "colors";
 
 export const client = createClient({ url: env.REDIS_URL });
 
-client.on("ready", (error) => {
+client.on("error", (error) => {
   console.error("Redis Client Error:", error);
 });
 
