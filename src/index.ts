@@ -3,10 +3,12 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
+import swaggerUi from "swagger-ui-express";
 
 import route from "@/routes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { env } from "@/config";
+import { swaggerSpec } from "@/config/swagger";
 
 const app = express();
 
@@ -14,6 +16,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(morgan("dev"));
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.get("/api-docs.json", (_req, res) => {
+  res.json(swaggerSpec);
+});
 
 app.use(cookieParser(env.JWT_SECRET));
 app.use(helmet());
