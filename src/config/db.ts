@@ -23,5 +23,6 @@ export const disconnectFromDatabase = async (): Promise<void> => {
     console.log("MongoDB connection closed".bgRed);
   } catch (error) {
     console.log("Error disconnect form database", error);
+    throw error;
   }
 };

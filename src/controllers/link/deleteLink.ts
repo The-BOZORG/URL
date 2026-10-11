@@ -12,7 +12,7 @@ export const deleteLink = asyncHandler(
 
     const deletedLink = await Link.findOneAndDelete({
       _id: LinkId,
-      userId: userId,
+      creator: userId,
     });
 
     if (!deletedLink) throw new ApiError("link is not available", 404);

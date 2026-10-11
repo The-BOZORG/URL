@@ -1,4 +1,7 @@
 import { Router } from "express";
+
+import { authLimiter, globalLimiter } from "@/libs/rateLimiter";
+
 import authRouter from "@/routes/auth";
 import userRouter from "@/routes/user";
 import linkRouter from "@/routes/link";
@@ -13,8 +16,8 @@ route.get("/", (req, res) => {
   });
 });
 
-route.use("/auth", authRouter);
-route.use("/user", userRouter);
-route.use("/link", linkRouter);
+route.use("/auth", authLimiter, authRouter);
+route.use("/user", globalLimiter, userRouter);
+route.use("/link", globalLimiter, linkRouter);
 
 export default route;

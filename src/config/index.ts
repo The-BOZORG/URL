@@ -5,7 +5,11 @@ import { z } from "zod";
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production"]),
   PORT: z.coerce.number().int().default(3000),
-  WHITELIST: z.string().email(),
+  WHITELIST: z
+    .string()
+    .transform((value) =>
+      value.split(",").map((email) => email.trim().toLowerCase()),
+    ),
   MONGO_URI: z.string().url(),
   REDIS_URL: z.string().url(),
   JWT_SECRET: z.string().min(1),

@@ -17,7 +17,7 @@ export const login = asyncHandler(
       .select("email password username role ")
       .exec();
 
-    if (!user) throw new ApiError("User already exists", 400);
+    if (!user) throw new ApiError("User not found", 404);
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 

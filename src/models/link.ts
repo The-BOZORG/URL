@@ -31,4 +31,4 @@ const linkSchema = new Schema(
   },
 );
 
-export const Link = mongoose.model("User", linkSchema);
+export const Link = mongoose.model("Link", linkSchema);
