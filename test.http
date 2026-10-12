@@ -1,9 +1,10 @@
+### register
 POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "username":"soroush",
-  "email":"soroush@yahoo.com",
+  "username":"ali",
+  "email":"ali@yahoo.com",
   "password":"1234"
 }
 
@@ -53,3 +54,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3N
 ### delete user
 DELETE  http://localhost:3000/api/v1/user/delete
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWM3NmUyMzE1NzVhZDU5NzEyNDc2YjIiLCJpYXQiOjE3OTE0NTQ3NTcsImV4cCI6MTc5MTQ1NTY1Nywic3ViIjoiYWNjZXNzVG9rZW4ifQ.qZAnuvaK9wuQ0HLDCM5C_w19GMh51Fu4pogAHa_5krw
+
+
+### my link 
+GET  http://localhost:3000/api/v1/link/myLink
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWNjZGE0NDhkYWU2NDQ2NmEzOGI3MDIiLCJpYXQiOjE3OTE4MTY1NTcsImV4cCI6MTc5MTgxNzQ1Nywic3ViIjoiYWNjZXNzVG9rZW4ifQ.-yqFf6HFFwN-7gJ6-Kgu0eFeQ_6Cvf7YBk5YK9O97Jk
+
+
+### create link 
+POST http://localhost:3000/api/v1/link/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YWNjZGE0NDhkYWU2NDQ2NmEzOGI3MDIiLCJpYXQiOjE3OTE4MTY1NTcsImV4cCI6MTc5MTgxNzQ1Nywic3ViIjoiYWNjZXNzVG9rZW4ifQ.-yqFf6HFFwN-7gJ6-Kgu0eFeQ_6Cvf7YBk5YK9O97Jk
+Content-Type: application/json
+
+{
+  "Url":"https://www.youtube.com"
+}
+
+
+### redirect 
+GET http://localhost:3000/api/v1/link/1Vfr3hjT
+
+
+

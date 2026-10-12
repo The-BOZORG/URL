@@ -1,6 +1,6 @@
 # URL Shortener API
 
-A REST API for shortening URLs, built with **Express 5**, **TypeScript**, **MongoDB** (via Mongoose), and **Redis**. Users register and log in with JWT-based authentication, create short links, and get redirected to the original URL when someone visits the short link. Each link tracks how many times it has been visited.
+A REST API for shortening URLs, built with **Express**, **TypeScript**, **MongoDB** (via Mongoose), and **Redis**. Users register and log in with JWT-based authentication, create short links, and get redirected to the original URL when someone visits the short link. Each link tracks how many times it has been visited.
 
 ## Table of Contents
 
@@ -16,8 +16,6 @@ A REST API for shortening URLs, built with **Express 5**, **TypeScript**, **Mong
 - [Rate Limiting](#rate-limiting)
 - [API Documentation](#api-documentation)
 - [API Reference](#api-reference)
-      - [Conventions](#conventions)
-      - [Health Check](#health-check)
       - [Auth](#auth)
       - [Users](#users)
       - [Links](#links)
@@ -42,15 +40,15 @@ A REST API for shortening URLs, built with **Express 5**, **TypeScript**, **Mong
 | ------------------ | --------------------------------------------- |
 | Runtime            | Node.js (Docker image uses Node 24)           |
 | Language           | TypeScript                                    |
-| Web framework      | Express 5                                     |
-| Database           | MongoDB with Mongoose 9                       |
-| Cache / sessions   | Redis (node-redis 6)                          |
+| Web framework      | Express                                       |
+| Database           | MongoDB with Mongoose                         |
+| Cache / sessions   | Redis (node-redis)                            |
 | Auth               | JSON Web Tokens (`jsonwebtoken`), bcrypt      |
-| Validation         | Zod 4                                         |
+| Validation         | Zod                                           |
 | Rate limiting      | express-rate-limit                            |
 | API documentation  | Swagger UI / OpenAPI specification            |
 | Security           | Helmet, CORS, cookie-parser (signed cookies)  |
-| Dev tooling        | tsx, nodemon, Yarn 4                          |
+| Dev tooling        | tsx, nodemon, Yarn                            |
 
 ## Project Structure
 
@@ -213,14 +211,6 @@ Note: the compiled output does not resolve the `@/` path alias, so run the app w
 ## API Reference
 
 Base URL: http://localhost:3000/api/v1
-
-### Conventions
-
-Protected endpoints require Authorization: Bearer <accessToken>. Request and response bodies use JSON; errors return { "message": "..." }.
-
-### Health Check
-
-GET / — Check API status.
 
 ### Auth
 

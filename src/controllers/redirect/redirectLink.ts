@@ -14,6 +14,9 @@ export const redirectLink = asyncHandler(
     link.views += 1;
     await link.save();
 
+    console.log("Short link:", shortLink);
+    console.log("Original URL:", link.Url);
+
     res.redirect(302, link.Url);
   },
 );

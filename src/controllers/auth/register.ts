@@ -14,7 +14,7 @@ export const register = asyncHandler(
       .lean()
       .exec();
 
-    if (existingUser) throw new ApiError("User already exists", 400);
+    if (existingUser) throw new ApiError("User already exists", 409);
 
     const role = env.WHITELIST.includes(email) ? "admin" : "user";
 
